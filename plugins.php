@@ -97,6 +97,10 @@ function tf_register_required_plugins() {
 			'slug'      => 'stream',
 		),
 		array(
+			'name'      => 'User Switching',
+			'slug'      => 'user-switching',
+		),
+		array(
 			'name'      => 'WP Retina 2x',
 			'slug'      => 'wp-retina-2x',
 		),
