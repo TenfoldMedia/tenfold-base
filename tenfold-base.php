@@ -50,6 +50,9 @@ add_action('manage_pages_custom_column', 'tf_posts_custom_id_columns', 5, 2);
 add_filter('manage_media_columns', 'tf_posts_columns_id', 5);
 add_action('manage_media_custom_column', 'tf_posts_custom_id_columns', 5, 2);
 
+// Disable the plugin / theme editor
+if (!defined('DISALLOW_FILE_EDIT')) { define('DISALLOW_FILE_EDIT', true); }
+
 
 /*********************
 CLEANUP
