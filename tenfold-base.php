@@ -9,3 +9,7 @@ Version:           1.0.0
 GitHub Plugin URI: TenfoldMedia/tenfold-base
 GitHub Branch:     master
 ******************************************************************/
+
+
+/* Require and reccommend plugins */
+require_once dirname( __FILE__ ).'/plugins.php';
