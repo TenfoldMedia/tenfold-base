@@ -13,6 +13,13 @@ function tf_register_required_plugins() {
 			'force_activation' => true, // If set to true, it forces the specified plugin to be active at all times while the current theme or plugin is active.
 		),
 		array(
+			'name'             => 'Tenfold Base',
+			'slug'             => 'tenfold-base',
+			'source'           => 'https://github.com/TenfoldMedia/tenfold-base/archive/master.zip',
+			'required'         => true, // If false, the plugin is only 'recommended' instead of required.
+			'force_activation' => true, // If set to true, it forces the specified plugin to be active at all times while the current theme or plugin is active.
+		),
+		array(
 			'name'             => 'Tenfold White Label',
 			'slug'             => 'tenfold-white-label',
 			'source'           => 'https://github.com/TenfoldMedia/tenfold-white-label/archive/master.zip',
