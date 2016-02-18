@@ -5,7 +5,7 @@ Plugin URI:        http://tenfold.media
 Description:       This plugin helps us set up WordPress for Tenfold Media clients.
 Author:            Tim Rye
 Author URI:        http://tenfold.media/tim
-Version:           1.0.2
+Version:           1.0.3
 GitHub Plugin URI: TenfoldMedia/tenfold-base
 GitHub Branch:     master
 ******************************************************************/
