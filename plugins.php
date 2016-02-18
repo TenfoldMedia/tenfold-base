@@ -12,7 +12,7 @@ function tf_register_required_plugins() {
 			'required'         => true, // If false, the plugin is only 'recommended' instead of required.
 			'force_activation' => true, // If set to true, it forces the specified plugin to be active at all times while the current theme or plugin is active.
 		),
-		array(
+		array( // This is this plugin. By adding it here we ensure it can't be deactivated.
 			'name'             => 'Tenfold Base',
 			'slug'             => 'tenfold-base',
 			'source'           => 'https://github.com/TenfoldMedia/tenfold-base/archive/master.zip',
@@ -26,13 +26,13 @@ function tf_register_required_plugins() {
 			'required'         => true, // If false, the plugin is only 'recommended' instead of required.
 			'force_activation' => true, // If set to true, it forces the specified plugin to be active at all times while the current theme or plugin is active.
 		),
-		/*array(
+		array(
 			'name'             => 'Tenfold Custom CSS & JS',
 			'slug'             => 'tenfold-custom-css-js',
 			'source'           => 'https://github.com/TenfoldMedia/tenfold-custom-css-js/archive/master.zip',
 			'required'         => false, // If false, the plugin is only 'recommended' instead of required.
 			'force_activation' => false, // If set to true, it forces the specified plugin to be active at all times while the current theme or plugin is active.
-		),*/
+		),
 
 		array(
 			'name'      => 'Admin Menu Editor',
