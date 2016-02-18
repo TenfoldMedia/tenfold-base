@@ -102,3 +102,11 @@ add_action('admin_menu', 'tf_disable_dashboard_widgets');
 // dequeue Jetpack's 'devicepx' script (which is totally unneccesary and is a blocking script)
 function remove_jetpack_devicepx() { wp_dequeue_script('devicepx'); }
 add_action('wp_enqueue_scripts', 'remove_jetpack_devicepx', 20);
+
+// disable self pingbacks
+function disable_self_ping(&$links) {
+	foreach ($links as $l => $link) {
+		if (0 === strpos($link, home_url())) { unset($links[$l]); }
+	}
+}
+add_action('pre_ping', 'disable_self_ping');
