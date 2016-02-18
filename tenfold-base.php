@@ -68,13 +68,19 @@ function tf_filter_ptags_on_images($content){ return preg_replace('/<p>\s*(<a .*
 
 // remove all sorts of unneccesary things (some using functions above)
 function tf_cleanup() {
-	remove_action('wp_head', 'feed_links_extra', 3);					// category feeds
-	remove_action('wp_head', 'feed_links', 2);							// post and comment feeds
-	remove_action('wp_head', 'rsd_link');								// EditURI link
-	remove_action('wp_head', 'wlwmanifest_link');						// windows live writer
-	remove_action('wp_head', 'index_rel_link');							// index link
-	remove_action('wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0);	// links for adjacent posts
-	remove_action('wp_head', 'wp_generator');							// WP version
+	remove_action('wp_head', 'feed_links_extra', 3);
+	remove_action('wp_head', 'feed_links', 2);
+	remove_action('wp_head', 'rsd_link');
+	remove_action('wp_head', 'wlwmanifest_link');
+	remove_action('wp_head', 'index_rel_link');
+	remove_action('wp_head', 'parent_post_rel_link', 10, 0);
+	remove_action('wp_head', 'start_post_rel_link', 10, 0);
+	remove_action('wp_head', 'adjacent_posts_rel_link', 10, 0);
+	remove_action('wp_head', 'wp_generator');
+	remove_action('wp_head', 'jetpack_og_tags');
+	remove_action('wp_head', 'print_emoji_detection_script', 7);
+	remove_action('wp_print_styles', 'print_emoji_styles');
+	add_filter('use_default_gallery_style', '__return_false');
 
 	add_filter('the_generator', 'tf_remove_wp_ver_rss');				// remove WP version from RSS
 	add_filter('style_loader_src', 'tf_remove_wp_ver_css_js', 9999);	// remove WP version from css
