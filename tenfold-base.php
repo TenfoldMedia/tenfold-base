@@ -1,11 +1,11 @@
 <?php
 /******************************************************************
 Plugin Name:       Tenfold Base
-Plugin URI:        http://tenfold.media
-Description:       This plugin helps us set up WordPress for Tenfold Media clients.
+Plugin URI:        http://tenfold.co.uk
+Description:       This plugin helps us set up WordPress for Tenfold clients.
 Author:            Tim Rye
-Author URI:        http://tenfold.media/tim
-Version:           1.0.3
+Author URI:        https://tenfold.co.uk/tim
+Version:           1.0.4
 GitHub Plugin URI: TenfoldMedia/tenfold-base
 GitHub Branch:     master
 ******************************************************************/
@@ -31,9 +31,9 @@ function tf_redirect_to_blog_base($template) {
 add_filter('404_template', 'tf_redirect_to_blog_base');
 
 /* Front-end footer credit helper funtion */
-function tf_the_footer_credit($context_pre = 'Web Design by', $link_title = 'Web Design by Tenfold Media', $context_post = '', $chars = 5) {
-	$url = 'http://tenfold.media/referral/?ref='.substr(preg_replace('#^www\.(.+\.)#i', '$1', $_SERVER['HTTP_HOST']), 0, $chars);
-	echo ($context_pre ? $context_pre . ' ' : '') . '<a href="' . $url . '" rel="nofollow" target="_blank" title="' . $link_title . '">Tenfold Media</a>' . ($context_post ? ' ' . $context_post : '');
+function tf_the_footer_credit($context_pre = 'Web Design by', $link_title = 'Web Design by Tenfold', $context_post = '', $chars = 5) {
+	$url = 'https://tenfold.co.uk/referral/?ref='.substr(preg_replace('#^www\.(.+\.)#i', '$1', $_SERVER['HTTP_HOST']), 0, $chars);
+	echo ($context_pre ? $context_pre . ' ' : '') . '<a href="' . $url . '" rel="nofollow" target="_blank" title="' . $link_title . '">Tenfold</a>' . ($context_post ? ' ' . $context_post : '');
 }
 
 /*********************
@@ -64,7 +64,7 @@ function tf_remove_wp_ver_rss() { return ''; }
 function tf_remove_wp_ver_css_js($src) { if (strpos($src, 'ver=')) $src = remove_query_arg('ver', $src); return $src; }
 
 // remove the p from around imgs
-function tf_filter_ptags_on_images($content){ return preg_replace('/<p>\s*(<a .*>)?\s*(<img .* \/>)\s*(<\/a>)?\s*<\/p>/iU', '\1\2\3', $content); }
+function tf_filter_ptags_on_images($content) { return preg_replace('/<p>\s*(<a .*>)?\s*(<img .* \/>)\s*(<\/a>)?\s*<\/p>/iU', '\1\2\3', $content); }
 
 // remove all sorts of unneccesary things (some using functions above)
 function tf_cleanup() {
@@ -99,10 +99,6 @@ function tf_disable_dashboard_widgets() {
 }
 add_action('admin_menu', 'tf_disable_dashboard_widgets');
 
-// dequeue Jetpack's 'devicepx' script (which is totally unneccesary and is a blocking script)
-function remove_jetpack_devicepx() { wp_dequeue_script('devicepx'); }
-add_action('wp_enqueue_scripts', 'remove_jetpack_devicepx', 20);
-
 // disable self pingbacks
 function disable_self_ping(&$links) {
 	foreach ($links as $l => $link) {
@@ -110,3 +106,6 @@ function disable_self_ping(&$links) {
 	}
 }
 add_action('pre_ping', 'disable_self_ping');
+
+// stop Jetpack from serving one big CSS file, irrespective of what is needed
+add_filter('jetpack_implode_frontend_css', '__return_false');

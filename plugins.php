@@ -118,13 +118,13 @@ function tf_register_required_plugins() {
 		'is_automatic' => true,						// Automatically activate plugins after installation or not.
 		'strings'      => array(
 			'notice_can_install_required'     => _n_noop(
-				'Tenfold Media requires the following plugin be installed: %1$s.',
-				'Tenfold Media requires the following plugins be installed: %1$s.',
+				'Tenfold requires the following plugin be installed: %1$s.',
+				'Tenfold requires the following plugins be installed: %1$s.',
 				'tenfold-base'
 			), // %1$s = plugin name(s).
 			'notice_can_install_recommended'  => _n_noop(
-				'Tenfold Media recommends the following plugin: %1$s.',
-				'Tenfold Media recommends the following plugins: %1$s.',
+				'Tenfold recommends the following plugin: %1$s.',
+				'Tenfold recommends the following plugins: %1$s.',
 				'tenfold-base'
 			), // %1$s = plugin name(s).
 			'notice_ask_to_update'            => _n_noop(
@@ -132,7 +132,7 @@ function tf_register_required_plugins() {
 				'The following plugins need to be updated to their latest version: %1$s.',
 				'tenfold-base'
 			), // %1$s = plugin name(s).
-			'plugin_needs_higher_version'     => __( 'Plugin not activated. Tenfold Media requires a higher version of %s. Please update the plugin.', 'tenfold-base' ),  // %1$s = plugin name(s).
+			'plugin_needs_higher_version'     => __( 'Plugin not activated. Tenfold requires a higher version of %s. Please update the plugin.', 'tenfold-base' ),  // %1$s = plugin name(s).
 
 			'nag_type'                        => 'error', // Determines admin notice type - can only be 'updated', 'update-nag' or 'error'.
 		),
