@@ -5,7 +5,7 @@ Plugin URI:        http://tenfold.co.uk
 Description:       This plugin helps us set up WordPress for Tenfold clients.
 Author:            Tim Rye
 Author URI:        https://tenfold.co.uk/tim
-Version:           1.0.4
+Version:           1.0.5
 GitHub Plugin URI: TenfoldMedia/tenfold-base
 GitHub Branch:     master
 ******************************************************************/
@@ -32,7 +32,8 @@ add_filter('404_template', 'tf_redirect_to_blog_base');
 
 /* Front-end footer credit helper funtion */
 function tf_the_footer_credit($context_pre = 'Web Design by', $link_title = 'Web Design by Tenfold', $context_post = '', $chars = 5) {
-	$url = 'https://tenfold.co.uk/referral/?ref='.substr(preg_replace('#^www\.(.+\.)#i', '$1', $_SERVER['HTTP_HOST']), 0, $chars);
+	//$url = 'https://tenfold.co.uk/referral/?ref='.substr(preg_replace('#^www\.(.+\.)#i', '$1', $_SERVER['HTTP_HOST']), 0, $chars);
+	$url = 'https://tenfold.co.uk';
 	echo ($context_pre ? $context_pre . ' ' : '') . '<a href="' . $url . '" rel="nofollow" target="_blank" title="' . $link_title . '">Tenfold</a>' . ($context_post ? ' ' . $context_post : '');
 }
 
