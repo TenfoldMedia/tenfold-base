@@ -5,7 +5,7 @@ Plugin URI:        http://tenfold.co.uk
 Description:       This plugin helps us set up WordPress for Tenfold clients.
 Author:            Tim Rye
 Author URI:        https://tenfold.co.uk/tim
-Version:           1.0.5
+Version:           1.0.6
 GitHub Plugin URI: TenfoldMedia/tenfold-base
 GitHub Branch:     master
 ******************************************************************/
@@ -61,8 +61,6 @@ CLEANUP
 
 // remove WP version from RSS
 function tf_remove_wp_ver_rss() { return ''; }
-// remove WP version from scripts
-function tf_remove_wp_ver_css_js($src) { if (strpos($src, 'ver=')) $src = remove_query_arg('ver', $src); return $src; }
 
 // remove the p from around imgs
 function tf_filter_ptags_on_images($content) { return preg_replace('/<p>\s*(<a .*>)?\s*(<img .* \/>)\s*(<\/a>)?\s*<\/p>/iU', '\1\2\3', $content); }
@@ -84,8 +82,6 @@ function tf_cleanup() {
 	add_filter('use_default_gallery_style', '__return_false');
 
 	add_filter('the_generator', 'tf_remove_wp_ver_rss');				// remove WP version from RSS
-	add_filter('style_loader_src', 'tf_remove_wp_ver_css_js', 9999);	// remove WP version from css
-	add_filter('script_loader_src', 'tf_remove_wp_ver_css_js', 9999);	// remove WP version from scripts
 
 	add_filter('the_content', 'tf_filter_ptags_on_images');				// cleaning up random code around images
 }
